@@ -1,0 +1,160 @@
+{
+  "metadata": {
+    "created_at": "2026-03-25T21:04:41Z",
+    "last_updated": "2026-03-25T21:04:52Z",
+    "source_files": [
+      "sample_transactions.csv",
+      "sample_obligations.csv",
+      "sample_receivables.json"
+    ],
+    "record_counts": {
+      "transactions": 5,
+      "obligations": 3,
+      "receivables": 2
+    }
+  },
+  "transactions": [
+    {
+      "transaction_id": "txn_20240301_dc841ccc",
+      "date": "2024-03-01",
+      "description": "Opening Balance",
+      "amount": 5000.0,
+      "type": "starting",
+      "running_balance": 5000.0,
+      "source": "sample_transactions.csv",
+      "category": "uncategorized",
+      "is_duplicate": false
+    },
+    {
+      "transaction_id": "txn_20240302_b725ee59",
+      "date": "2024-03-02",
+      "description": "Coffee Beans Supply Co",
+      "amount": -850.0,
+      "type": "expense",
+      "running_balance": 4150.0,
+      "source": "sample_transactions.csv",
+      "category": "uncategorized",
+      "is_duplicate": false
+    },
+    {
+      "transaction_id": "txn_20240303_97326be5",
+      "date": "2024-03-03",
+      "description": "Square Payment - Customer Sales",
+      "amount": 425.0,
+      "type": "income",
+      "running_balance": 4575.0,
+      "source": "sample_transactions.csv",
+      "category": "uncategorized",
+      "is_duplicate": false
+    },
+    {
+      "transaction_id": "txn_20240305_3d485ee0",
+      "date": "2024-03-05",
+      "description": "Landlord - March Rent",
+      "amount": -2000.0,
+      "type": "expense",
+      "running_balance": 2575.0,
+      "source": "sample_transactions.csv",
+      "category": "uncategorized",
+      "is_duplicate": false
+    },
+    {
+      "transaction_id": "txn_20240307_249dfdbb",
+      "date": "2024-03-07",
+      "description": "Office Catering Client Payment",
+      "amount": 1250.0,
+      "type": "income",
+      "running_balance": 3825.0,
+      "source": "sample_transactions.csv",
+      "category": "uncategorized",
+      "is_duplicate": false
+    }
+  ],
+  "obligations": [
+    {
+      "obligation_id": "obl_20240325_4c562a13",
+      "vendor": "Coffee Beans Supply Co",
+      "description": "Monthly coffee order",
+      "amount": 950.0,
+      "due_date": "2024-03-25",
+      "invoice_id": "",
+      "category": "inventory",
+      "is_critical": true,
+      "late_fee": 0.0,
+      "grace_days": 0,
+      "flexibility_score": 0.3,
+      "relationship_tier": "standard",
+      "recurring_payment": false,
+      "periodicity": null,
+      "source": "sample_obligations.csv"
+    },
+    {
+      "obligation_id": "obl_20240401_e85edc19",
+      "vendor": "Landlord",
+      "description": "April rent",
+      "amount": 2000.0,
+      "due_date": "2024-04-01",
+      "invoice_id": "",
+      "category": "rent",
+      "is_critical": true,
+      "late_fee": 0.0,
+      "grace_days": 0,
+      "flexibility_score": 0.1,
+      "relationship_tier": "standard",
+      "recurring_payment": false,
+      "periodicity": null,
+      "source": "sample_obligations.csv"
+    },
+    {
+      "obligation_id": "obl_20240328_c61d045c",
+      "vendor": "Electricity Board",
+      "description": "Monthly utility bill",
+      "amount": 180.0,
+      "due_date": "2024-03-28",
+      "invoice_id": "",
+      "category": "utilities",
+      "is_critical": false,
+      "late_fee": 0.0,
+      "grace_days": 0,
+      "flexibility_score": 0.6,
+      "relationship_tier": "standard",
+      "recurring_payment": false,
+      "periodicity": null,
+      "source": "sample_obligations.csv"
+    }
+  ],
+  "receivables": [
+    {
+      "receivable_id": "rec_20240322_3b42e220",
+      "client": "Office Catering Co",
+      "description": "Monthly catering contract - March",
+      "amount": 1250.0,
+      "expected_date": "2024-03-22",
+      "invoice_id": "",
+      "category": "uncategorized",
+      "probability": 0.95,
+      "client_tier": "critical",
+      "payment_terms": "Net 15",
+      "is_overdue": true,
+      "recurring_payment": true,
+      "periodicity": "monthly",
+      "source": "sample_receivables.json"
+    },
+    {
+      "receivable_id": "rec_20240410_b87f467a",
+      "client": "TechStart Solutions",
+      "description": "Software consulting invoice #INV-2024-003",
+      "amount": 3500.0,
+      "expected_date": "2024-04-10",
+      "invoice_id": "INV-2024-003",
+      "category": "uncategorized",
+      "probability": 0.85,
+      "client_tier": "standard",
+      "payment_terms": "Net 30",
+      "is_overdue": true,
+      "recurring_payment": false,
+      "periodicity": null,
+      "source": "sample_receivables.json"
+    }
+  ]
+}

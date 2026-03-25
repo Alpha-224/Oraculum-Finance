@@ -1,0 +1,37 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.10.6, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Adity\AppData\Local\Programs\Python\Python310\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Adity\Desktop\Projects\Fintech
+collecting ... collected 29 items
+
+backend/tests/test_integration.py::TestGoldenResponse::test_golden_response_shape PASSED [  3%]
+backend/tests/test_integration.py::TestGoldenResponse::test_json_serializable PASSED [  6%]
+backend/tests/test_monte_carlo.py::TestMonteCarloEngine::test_survival_in_range PASSED [ 10%]
+backend/tests/test_monte_carlo.py::TestMonteCarloEngine::test_probability_one_always_arrives PASSED [ 13%]
+backend/tests/test_monte_carlo.py::TestMonteCarloEngine::test_probability_zero_never_arrives PASSED [ 17%]
+backend/tests/test_monte_carlo.py::TestMonteCarloEngine::test_overdue_always_zero PASSED [ 20%]
+backend/tests/test_monte_carlo.py::TestMonteCarloEngine::test_percentile_ordering PASSED [ 24%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_always_three_strategies PASSED [ 27%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_strategy_names PASSED [ 31%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_action_count_matches_obligations PASSED [ 34%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_valid_action_labels PASSED [ 37%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_fractions_ten_percent_increments PASSED [ 41%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_paid_amount_not_exceeds_obligation PASSED [ 44%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_survival_probability_in_range PASSED [ 48%]
+backend/tests/test_planner.py::TestBeamSearchPlanner::test_zero_obligations_empty_actions PASSED [ 51%]
+backend/tests/test_scorer.py::TestObligationScorer::test_overdue_obligation_urgency_one PASSED [ 55%]
+backend/tests/test_scorer.py::TestObligationScorer::test_no_late_fee_monetary_zero PASSED [ 58%]
+backend/tests/test_scorer.py::TestObligationScorer::test_is_critical_operational_one PASSED [ 62%]
+backend/tests/test_scorer.py::TestObligationScorer::test_flexibility_one_rigidity_zero PASSED [ 65%]
+backend/tests/test_scorer.py::TestObligationScorer::test_score_in_range PASSED [ 68%]
+backend/tests/test_scorer.py::TestObligationScorer::test_dominant_factor_valid PASSED [ 72%]
+backend/tests/test_scorer.py::TestObligationScorer::test_relationship_tier_minor_operational PASSED [ 75%]
+backend/tests/test_scorer.py::TestObligationScorer::test_monetary_capped_at_one PASSED [ 79%]
+backend/tests/test_simulator.py::TestCashSimulator::test_empty_transactions_opening_balance_zero PASSED [ 82%]
+backend/tests/test_simulator.py::TestCashSimulator::test_opening_balance_from_last_transaction PASSED [ 86%]
+backend/tests/test_simulator.py::TestCashSimulator::test_thirty_day_timeline_length PASSED [ 89%]
+backend/tests/test_simulator.py::TestCashSimulator::test_overdue_receivable_zero_inflow PASSED [ 93%]
+backend/tests/test_simulator.py::TestCashSimulator::test_cash_breach_sets_first_breach_day PASSED [ 96%]
+backend/tests/test_simulator.py::TestCashSimulator::test_no_breach_returns_none PASSED [100%]
+
+============================= 29 passed in 0.15s ==============================

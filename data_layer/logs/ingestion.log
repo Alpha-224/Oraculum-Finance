@@ -187,3 +187,67 @@
 22:43:28 │ INFO    │ 
   TXT total: 3 added, 0 skipped
 22:44:23 │ INFO    │ Loaded master JSON: W:\Vault\Codes\fintechSNUChacks26\oraculum 2\Oraculum-Finance\data_layer\master_financial_data.json
+00:34:12 │ ERROR   │ Image parse error: 'ocr'
+00:34:12 │ ERROR   │ Image parse error: 'ocr'
+00:34:12 │ ERROR   │ Image parse error: 'ocr'
+00:34:12 │ ERROR   │ Image parse error: 'ocr'
+00:34:12 │ ERROR   │ Image parse error: 'ocr'
+02:34:41 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:41 │ INFO    │ Processing: sample_transactions.csv
+02:34:41 │ INFO    │ Table type: transactions
+02:34:41 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:41 │ INFO    │   Format detected: CSV
+02:34:41 │ INFO    │   CSV parsed: 5 rows from sample_transactions.csv
+02:34:41 │ INFO    │   ✓ Row 1: Opening Balance
+02:34:41 │ INFO    │   ✓ Row 2: Coffee Beans Supply Co
+02:34:41 │ INFO    │   ✓ Row 3: Square Payment - Customer Sales
+02:34:41 │ INFO    │   ✓ Row 4: Landlord - March Rent
+02:34:41 │ INFO    │   ✓ Row 5: Office Catering Client Payment
+02:34:41 │ INFO    │ No existing master JSON found — creating new.
+02:34:41 │ INFO    │ Computed running balances for 5 transactions (final balance: 3825.00)
+02:34:41 │ INFO    │   Merge complete: 5 added, 0 duplicates skipped
+02:34:41 │ INFO    │ Saved master JSON: C:\Users\Adity\Desktop\Projects\Fintech\data_layer\master_financial_data.json (txn=5, obl=0, rec=0)
+02:34:41 │ INFO    │ 
+  ── Summary ──
+02:34:41 │ INFO    │   Processed: 5 rows
+02:34:41 │ INFO    │   Added:     5
+02:34:41 │ INFO    │   Skipped:   0 (duplicates)
+02:34:41 │ INFO    │   Errors:    0
+02:34:41 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:50 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:50 │ INFO    │ Processing: sample_obligations.csv
+02:34:50 │ INFO    │ Table type: obligations
+02:34:50 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:50 │ INFO    │   Format detected: CSV
+02:34:50 │ INFO    │   CSV parsed: 3 rows from sample_obligations.csv
+02:34:50 │ INFO    │   ✓ Row 1: Monthly coffee order
+02:34:50 │ INFO    │   ✓ Row 2: April rent
+02:34:50 │ INFO    │   ✓ Row 3: Monthly utility bill
+02:34:50 │ INFO    │ Loaded master JSON: C:\Users\Adity\Desktop\Projects\Fintech\data_layer\master_financial_data.json
+02:34:50 │ INFO    │   Merge complete: 3 added, 0 duplicates skipped
+02:34:50 │ INFO    │ Saved master JSON: C:\Users\Adity\Desktop\Projects\Fintech\data_layer\master_financial_data.json (txn=5, obl=3, rec=0)
+02:34:50 │ INFO    │ 
+  ── Summary ──
+02:34:50 │ INFO    │   Processed: 3 rows
+02:34:50 │ INFO    │   Added:     3
+02:34:50 │ INFO    │   Skipped:   0 (duplicates)
+02:34:50 │ INFO    │   Errors:    0
+02:34:50 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:52 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:52 │ INFO    │ Processing: sample_receivables.json
+02:34:52 │ INFO    │ Table type: receivables
+02:34:52 │ INFO    │ ════════════════════════════════════════════════════════════
+02:34:52 │ INFO    │   Format detected: JSON
+02:34:52 │ INFO    │   JSON parsed: 2 records from sample_receivables.json
+02:34:52 │ INFO    │   ✓ Row 1: Monthly catering contract - March
+02:34:52 │ INFO    │   ✓ Row 2: Software consulting invoice #INV-2024-003
+02:34:52 │ INFO    │ Loaded master JSON: C:\Users\Adity\Desktop\Projects\Fintech\data_layer\master_financial_data.json
+02:34:52 │ INFO    │   Merge complete: 2 added, 0 duplicates skipped
+02:34:52 │ INFO    │ Saved master JSON: C:\Users\Adity\Desktop\Projects\Fintech\data_layer\master_financial_data.json (txn=5, obl=3, rec=2)
+02:34:52 │ INFO    │ 
+  ── Summary ──
+02:34:52 │ INFO    │   Processed: 2 rows
+02:34:52 │ INFO    │   Added:     2
+02:34:52 │ INFO    │   Skipped:   0 (duplicates)
+02:34:52 │ INFO    │   Errors:    0
+02:34:52 │ INFO    │ ════════════════════════════════════════════════════════════

@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config import logger, MASTER_JSON_PATH
 from parsers import detect_format, parse_csv, parse_json, parse_txt_gemini
+from ocr_parser import parse_image
 from cleaners import CLEANERS, apply_defaults
 from validators import validate_record
 from id_generator import generate_id
@@ -79,6 +80,26 @@ def process_file(filepath: str, table_type: str) -> None:
                 total_skipped += report["skipped"]
 
         logger.info(f"\n  TXT total: {total_added} added, {total_skipped} skipped")
+        return
+
+    elif fmt == "image":
+        parsed = parse_image(filepath)
+        
+        source = os.path.basename(filepath)
+        total_added = 0
+        
+        for ttype in ("transactions", "obligations", "receivables"):
+            records = parsed.get(ttype, [])
+            if records:
+                logger.info(f"\n  ── {ttype.upper()} ({len(records)} auto-processed) ──")
+                total_added += len(records)
+                
+        hw_docs = parsed.get("hand_written_docs", [])
+        if hw_docs:
+            logger.info(f"\n  ── HAND_WRITTEN_DOCS ({len(hw_docs)} processed) ──")
+            logger.info(f"  Status: {parsed.get('status')} | Message: {parsed.get('message')}")
+            
+        logger.info(f"\n  IMAGE total auto-integrated: {total_added}")
         return
 
     logger.info(f"{'═' * 60}")
@@ -288,12 +309,12 @@ def main():
         fmt = detect_format(filepath)
         table_type = args.type
 
-        # For TXT files, type is auto-detected (mixed content)
-        if fmt == "txt":
+        # For TXT/IMAGE files, type is auto-detected (mixed content)
+        if fmt in ("txt", "image"):
             if table_type:
-                logger.info(f"Note: TXT files may contain mixed types. "
+                logger.info(f"Note: {fmt.upper()} files may contain mixed types. "
                             f"--type will be ignored; all types extracted.")
-            process_file(filepath, "transactions")  # table_type unused for TXT
+            process_file(filepath, "transactions")  # table_type unused for TXT/IMAGE
         else:
             if not table_type:
                 # Interactive prompt

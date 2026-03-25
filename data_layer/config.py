@@ -27,7 +27,7 @@ logging.basicConfig(
 logger = logging.getLogger("oraculum")
 
 # ─── Supported Formats ───────────────────────────────────────────────────────
-SUPPORTED_EXTENSIONS = {".csv", ".json", ".txt"}
+SUPPORTED_EXTENSIONS = {".csv", ".json", ".txt", ".png", ".jpg", ".jpeg"}
 
 # ─── Standard Category Taxonomy ──────────────────────────────────────────────
 VALID_CATEGORIES = {

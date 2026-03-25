@@ -1,0 +1,4 @@
+vendor,description,amount,due_date,is_critical,category,flexibility_score
+Coffee Beans Supply Co,Monthly coffee order,950.00,2024-03-25,True,inventory,0.3
+Landlord,April rent,2000.00,2024-04-01,True,rent,0.1
+Electricity Board,Monthly utility bill,180.00,2024-03-28,False,utilities,0.6

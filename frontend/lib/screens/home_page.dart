@@ -4,46 +4,51 @@ import 'dashboard_page.dart';
 import 'data_page.dart';
 import 'simulation_page.dart';
 import 'account_page.dart';
-
 import '../main.dart';
 
-class HomePage extends StatefulWidget
-{
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-{
+class _HomePageState extends State<HomePage> {
   int idx = 0;
-  PageController pc = PageController();
+  final PageController pc = PageController();
 
-  final pages = [
+  final pages = const [
     DashboardPage(),
     DataPage(),
     SimulationPage(),
     AccountPage(),
   ];
 
-  void changePage(int i)
-  {
+  void changePage(int i) {
     setState(() { idx = i; });
     pc.jumpToPage(i);
   }
 
   @override
-  Widget build(BuildContext context)
-  {
+  void dispose() {
+    pc.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text("ORACULUM"),
+        title: const Text('ORACULUM'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
+            tooltip: 'Sign out',
             onPressed: () {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginPageWrapper()));
             },
-          )
+          ),
         ],
       ),
       body: PageView(

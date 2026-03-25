@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.transparent, // allow background to show
+        scaffoldBackgroundColor: Colors.transparent,
         primarySwatch: Colors.teal,
         textTheme: const TextTheme(
           displayLarge: TextStyle(
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return Stack(
           children: [
-            const GlobalBackground(), // persistent animated background
+            const GlobalBackground(),
             if (child != null) child,
           ],
         );
@@ -76,7 +76,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// optional wrapper to show title on login page
 class LoginPageWrapper extends StatelessWidget {
   const LoginPageWrapper({super.key});
 
@@ -107,7 +106,7 @@ class LoginPageWrapper extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            Expanded(child: LoginPage()),
+            const Expanded(child: LoginPage()),
           ],
         ),
       ),

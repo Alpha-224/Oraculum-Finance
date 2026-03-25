@@ -62,30 +62,21 @@ class DataPage extends StatelessWidget {
                   },
                   child: GlassContainer(
                     child: Center(
-                      child: Stack(
-                        alignment: Alignment.center,
-                        clipBehavior: Clip.none,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.camera_alt,
-                              size: 80, color: Colors.white),
-                          Positioned(
-                            bottom: 10,
-                            left: 20,
-                            child: Icon(Icons.arrow_upward,
-                                size: 24, color: Colors.white),
-                          ),
-                          Positioned(
-                            bottom: -35,
-                            child: const Text(
-                              'Document Upload',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                letterSpacing: 1.5,
-                              ),
+                              size: 80, color: Colors.tealAccent),
+                          const SizedBox(height: 12),
+                          const Text(
+                            'Document Upload',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              letterSpacing: 1.5,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

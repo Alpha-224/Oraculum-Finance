@@ -48,6 +48,9 @@ def detect_format(filepath: str) -> str:
                        f"Attempting CSV parse anyway.")
         return "csv"
 
+    if ext in (".png", ".jpg", ".jpeg"):
+        return "image"
+
     return "txt"
 
 

@@ -1,0 +1,24 @@
+[
+  {
+    "client": "Office Catering Co",
+    "description": "Monthly catering contract - March",
+    "amount": 1250.00,
+    "expected_date": "2024-03-22",
+    "probability": 0.95,
+    "client_tier": "critical",
+    "payment_terms": "Net 15",
+    "recurring_payment": true,
+    "periodicity": "monthly"
+  },
+  {
+    "client": "TechStart Solutions",
+    "description": "Software consulting invoice #INV-2024-003",
+    "amount": 3500.00,
+    "expected_date": "2024-04-10",
+    "invoice_id": "INV-2024-003",
+    "probability": 0.85,
+    "client_tier": "standard",
+    "payment_terms": "Net 30",
+    "recurring_payment": false
+  }
+]

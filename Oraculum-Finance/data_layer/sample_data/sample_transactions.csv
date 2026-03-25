@@ -1,0 +1,6 @@
+date,description,amount,type
+2024-03-01,Opening Balance,5000.00,starting
+2024-03-02,Coffee Beans Supply Co,-850.00,expense
+2024-03-03,Square Payment - Customer Sales,425.00,income
+2024-03-05,Landlord - March Rent,-2000.00,expense
+2024-03-07,Office Catering Client Payment,1250.00,income

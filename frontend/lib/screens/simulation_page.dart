@@ -197,16 +197,19 @@ class _SimulationPageState extends State<SimulationPage> with SingleTickerProvid
                   children: [
                     Row(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                          decoration: BoxDecoration(color: c.withOpacity(0.15), borderRadius: BorderRadius.circular(8)),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(actionIcon(a.actionLabel), size: 14, color: c),
-                              const SizedBox(width: 4),
-                              Text(actionText(a.actionLabel), style: TextStyle(color: c, fontSize: 11, fontWeight: FontWeight.bold)),
-                            ],
+                        GestureDetector(
+                          onLongPress: () => showActionTooltip(context, a.actionLabel),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                            decoration: BoxDecoration(color: c.withOpacity(0.15), borderRadius: BorderRadius.circular(8)),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(actionIcon(a.actionLabel), size: 14, color: c),
+                                const SizedBox(width: 4),
+                                Text(actionText(a.actionLabel), style: TextStyle(color: c, fontSize: 11, fontWeight: FontWeight.bold)),
+                              ],
+                            ),
                           ),
                         ),
                         const Spacer(),

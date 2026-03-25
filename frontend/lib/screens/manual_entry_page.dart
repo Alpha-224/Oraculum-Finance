@@ -34,9 +34,7 @@ class _ManualEntryPageState extends State<ManualEntryPage> {
       },
     );
     if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
+      setState(() { selectedDate = picked; });
     }
   }
 
@@ -51,117 +49,124 @@ class _ManualEntryPageState extends State<ManualEntryPage> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: GlassContainer(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Income or Expenditure Choice
-                SegmentedButton<String>(
-                  segments: const [
-                    ButtonSegment(value: 'Income', label: Text('Income', style: TextStyle(color: Colors.white))),
-                    ButtonSegment(value: 'Expense', label: Text('Expenditure', style: TextStyle(color: Colors.white))),
-                  ],
-                  selected: {transactionType},
-                  onSelectionChanged: (Set<String> newSelection) {
-                    setState(() {
-                      transactionType = newSelection.first;
-                    });
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return Colors.teal.shade700;
-                      }
-                      return Colors.white.withOpacity(0.05);
-                    }),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                
-                // Amount
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Amount (₹)',
-                    icon: Icon(Icons.currency_rupee, color: Colors.tealAccent),
-                  ),
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                const SizedBox(height: 20),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight - 32),
+                child: GlassContainer(
+                  padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // ─── TYPE SELECTOR ───
+                      const Text('TRANSACTION TYPE', style: TextStyle(color: Colors.white38, fontSize: 13, letterSpacing: 1.5, fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 12),
+                      SegmentedButton<String>(
+                        segments: const [
+                          ButtonSegment(value: 'Income', label: Text('Income', style: TextStyle(color: Colors.white, fontSize: 16))),
+                          ButtonSegment(value: 'Expense', label: Text('Expenditure', style: TextStyle(color: Colors.white, fontSize: 16))),
+                        ],
+                        selected: {transactionType},
+                        onSelectionChanged: (s) => setState(() => transactionType = s.first),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+                            if (states.contains(WidgetState.selected)) return Colors.teal.shade700;
+                            return Colors.white.withOpacity(0.05);
+                          }),
+                          minimumSize: WidgetStateProperty.all(const Size(0, 52)),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
 
-                // Recurring or One-Time Choice
-                SegmentedButton<String>(
-                  segments: const [
-                    ButtonSegment(value: 'One-Time', label: Text('One-Time', style: TextStyle(color: Colors.white))),
-                    ButtonSegment(value: 'Recurring', label: Text('Recurring', style: TextStyle(color: Colors.white))),
-                  ],
-                  selected: {recurrence},
-                  onSelectionChanged: (Set<String> newSelection) {
-                    setState(() {
-                      recurrence = newSelection.first;
-                    });
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return Colors.teal.shade700;
-                      }
-                      return Colors.white.withOpacity(0.05);
-                    }),
+                      // ─── AMOUNT ───
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Amount (₹)',
+                          labelStyle: TextStyle(fontSize: 18),
+                          icon: Icon(Icons.currency_rupee, color: Colors.tealAccent, size: 28),
+                        ),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 28),
+
+                      // ─── RECURRENCE ───
+                      const Text('FREQUENCY', style: TextStyle(color: Colors.white38, fontSize: 13, letterSpacing: 1.5, fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 12),
+                      SegmentedButton<String>(
+                        segments: const [
+                          ButtonSegment(value: 'One-Time', label: Text('One-Time', style: TextStyle(color: Colors.white, fontSize: 16))),
+                          ButtonSegment(value: 'Recurring', label: Text('Recurring', style: TextStyle(color: Colors.white, fontSize: 16))),
+                        ],
+                        selected: {recurrence},
+                        onSelectionChanged: (s) => setState(() => recurrence = s.first),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+                            if (states.contains(WidgetState.selected)) return Colors.teal.shade700;
+                            return Colors.white.withOpacity(0.05);
+                          }),
+                          minimumSize: WidgetStateProperty.all(const Size(0, 52)),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+
+                      // ─── DATE ───
+                      InkWell(
+                        onTap: () => _selectDate(context),
+                        child: InputDecorator(
+                          decoration: const InputDecoration(
+                            labelText: 'Date',
+                            labelStyle: TextStyle(fontSize: 18),
+                            icon: Icon(Icons.calendar_today, color: Colors.tealAccent, size: 28),
+                          ),
+                          child: Text(
+                            "${selectedDate.toLocal()}".split(' ')[0],
+                            style: const TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+
+                      // ─── TO/FROM ───
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'To / From',
+                          labelStyle: TextStyle(fontSize: 18),
+                          icon: Icon(Icons.person, color: Colors.tealAccent, size: 28),
+                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      const SizedBox(height: 28),
+
+                      // ─── CATEGORY ───
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: 'Category',
+                          labelStyle: TextStyle(fontSize: 18),
+                          icon: Icon(Icons.category, color: Colors.tealAccent, size: 28),
+                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      const SizedBox(height: 40),
+
+                      // ─── SUBMIT ───
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                        ),
+                        child: const Text('SUBMIT', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 2)),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 20),
-
-                // Date Picker
-                InkWell(
-                  onTap: () => _selectDate(context),
-                  child: InputDecorator(
-                    decoration: const InputDecoration(
-                      labelText: 'Date',
-                      icon: Icon(Icons.calendar_today, color: Colors.tealAccent),
-                    ),
-                    child: Text(
-                      "${selectedDate.toLocal()}".split(' ')[0],
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // To/From Text Box
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'To / From',
-                    icon: Icon(Icons.person, color: Colors.tealAccent),
-                  ),
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(height: 20),
-
-                // Category
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Category',
-                    icon: Icon(Icons.category, color: Colors.tealAccent),
-                  ),
-                  style: TextStyle(color: Colors.white),
-                ),
-                const SizedBox(height: 40),
-
-                // Submit
-                ElevatedButton(
-                  onPressed: () {
-                    // Placeholder for Submit Actions
-                    Navigator.pop(context);
-                  },
-                  child: const Text('SUBMIT', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 2)),
-                )
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

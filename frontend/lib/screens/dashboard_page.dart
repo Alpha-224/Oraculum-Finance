@@ -343,27 +343,30 @@ class _DashboardPageState extends State<DashboardPage> {
       count = summary.byActionLabel[labelKey]!.count;
       amount = summary.byActionLabel[labelKey]!.amount;
     }
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.04),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: actionColor(labelKey).withOpacity(0.25)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              Icon(actionIcon(labelKey), size: 14, color: actionColor(labelKey)),
-              const SizedBox(width: 5),
-              Text(title, style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
-            ],
-          ),
-          const Spacer(),
-          Text('$count • ₹${amount.toStringAsFixed(0)}', style: const TextStyle(color: Colors.white54, fontSize: 11)),
-        ],
+    return GestureDetector(
+      onLongPress: () => showActionTooltip(context, labelKey),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.04),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: actionColor(labelKey).withOpacity(0.25)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Icon(actionIcon(labelKey), size: 14, color: actionColor(labelKey)),
+                const SizedBox(width: 5),
+                Text(title, style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
+              ],
+            ),
+            const Spacer(),
+            Text('$count • ₹${amount.toStringAsFixed(0)}', style: const TextStyle(color: Colors.white54, fontSize: 11)),
+          ],
+        ),
       ),
     );
   }

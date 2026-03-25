@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_page.dart';
 import 'widgets/global_background.dart';
+import 'widgets/simulation_map.dart';
 
 void main() {
   runApp(const MyApp());
@@ -86,27 +87,84 @@ class LoginPageWrapper extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 60),
-            Center(
-              child: Text(
-                'ORACULUM\nFINANCE',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(height: 1.1),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Next-Generation Financial Simulation & Advisory',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.white.withOpacity(0.9),
-                ),
-              ),
-            ),
             const SizedBox(height: 40),
-            const Expanded(child: LoginPage()),
+
+            // ─── STYLED TITLE with shadow/border ───
+            Center(
+              child: Stack(
+                children: [
+                  // Shadow layer
+                  Text(
+                    'ORACULUM\nFINANCE',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2,
+                      height: 1.1,
+                      foreground: Paint()
+                        ..style = PaintingStyle.fill
+                        ..color = Colors.tealAccent.withOpacity(0.08)
+                        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 18),
+                    ),
+                  ),
+                  // Border/stroke layer
+                  Text(
+                    'ORACULUM\nFINANCE',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2,
+                      height: 1.1,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 1.5
+                        ..color = Colors.tealAccent.withOpacity(0.4),
+                    ),
+                  ),
+                  // Main fill layer
+                  Text(
+                    'ORACULUM\nFINANCE',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2,
+                      height: 1.1,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(color: Colors.tealAccent.withOpacity(0.5), blurRadius: 20),
+                        Shadow(color: Colors.teal.withOpacity(0.3), blurRadius: 40, offset: const Offset(0, 4)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Next-Generation Financial Simulation & Advisory',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 14),
+            ),
+
+            // ─── SIMULATION MAP ───
+            const SizedBox(height: 16),
+            Expanded(
+              flex: 3,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: const SimulationMap(),
+              ),
+            ),
+
+            // ─── LOGIN FORM ───
+            const SizedBox(height: 12),
+            Expanded(
+              flex: 4,
+              child: const LoginPage(),
+            ),
           ],
         ),
       ),

@@ -4,7 +4,6 @@ import 'dashboard_page.dart';
 import 'data_page.dart';
 import 'simulation_page.dart';
 import 'account_page.dart';
-import '../main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,15 +40,6 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text('ORACULUM'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            tooltip: 'Sign out',
-            onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginPageWrapper()));
-            },
-          ),
-        ],
       ),
       body: PageView(
         controller: pc,

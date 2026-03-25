@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/api_models.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.0.2.2:5001/api'; // Android emulator → host localhost
+  static const String baseUrl = 'http://10.31.11.103:5001/api';
 
   /// Check if backend is alive and data file exists.
   static Future<HealthResponse?> checkHealth() async {
